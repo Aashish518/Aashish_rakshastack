@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import "../styles/pgDetails.css";
+import "../styles/pgdetails.css";
 import L from 'leaflet';
 import { useParams, useNavigate } from 'react-router-dom';
 
