@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const emailVerificationSchema = new Schema({
@@ -17,4 +17,4 @@ const emailVerificationSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('EmailVerification', emailVerificationSchema);
+module.exports = mongoose.model("EmailVerification", emailVerificationSchema);

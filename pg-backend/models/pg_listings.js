@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const pgListingSchema = new Schema({
@@ -28,7 +28,7 @@ const pgListingSchema = new Schema({
     },
     gender: {
         type: String,
-        enum: ['boy', 'girl', 'unisex'],
+        enum: ["boy", "girl", "unisex"],
         required: true
     },
     images: [
@@ -39,9 +39,9 @@ const pgListingSchema = new Schema({
     ],
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
         required: true
     }
 });
 
-module.exports = mongoose.model('PGListing', pgListingSchema);
+module.exports = mongoose.model("PGListing", pgListingSchema);

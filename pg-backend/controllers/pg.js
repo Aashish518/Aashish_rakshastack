@@ -1,5 +1,5 @@
-const PGListing = require('../models/pg_listings');
-const User =require('../models/users');
+const PGListing = require("../models/pg_listings");
+const User =require("../models/users");
 
 // Add a new PG listing
 exports.addPG = async (req, res) => {
@@ -11,7 +11,7 @@ exports.addPG = async (req, res) => {
     }));
 
     const amenitiesArray = amenities
-        .split(',')
+        .split(",")
         .map(item => item.trim())
         .filter(item => item.length > 0);
 
@@ -29,9 +29,9 @@ exports.addPG = async (req, res) => {
         });
 
         await newPG.save();
-        res.status(201).json({ message: 'PG added successfully', pg: newPG });
+        res.status(201).json({ message: "PG added successfully", pg: newPG });
     } catch (err) {
-        res.status(500).json({ message: 'Error adding PG', error: err.message });
+        res.status(500).json({ message: "Error adding PG", error: err.message });
     }
 };
 
@@ -81,12 +81,12 @@ exports.getPGs = async (req, res) => {
         if (amenities && amenities.trim() !== "") {
     const amenitiesArray = amenities.split(",").map(a => a.trim());
 
-    // Require ALL amenities to be present in DB's amenities array
+    // Require ALL amenities to be present in DB"s amenities array
     filter.amenities = { $all: amenitiesArray };
         } if (amenities && amenities.trim() !== "") {
             const amenitiesArray = amenities.split(",").map(a => a.trim());
 
-            // Require ALL amenities to be present in DB's amenities array
+            // Require ALL amenities to be present in DB"s amenities array
             filter.amenities = { $all: amenitiesArray };
         }
 
@@ -123,16 +123,16 @@ exports.getPGDetails = async (req, res) => {
 
     try {
         // Find PG by ID
-        const pg = await PGListing.findById(id).populate('userId', 'name email');
+        const pg = await PGListing.findById(id).populate("userId", "name email");
         
         // If PG not found
-        if (!pg) return res.status(404).json({ message: 'PG not found' });
+        if (!pg) return res.status(404).json({ message: "PG not found" });
 
         // Send PG details
         res.status(200).json({ pg });
 
     } catch (err) {
-        res.status(500).json({ message: 'Error fetching PG detail', error: err.message });
+        res.status(500).json({ message: "Error fetching PG detail", error: err.message });
     }
 };
 
@@ -145,7 +145,7 @@ exports.deletePG = async (req, res) => {
     try {
         // Find the PG by ID
         const pg = await PGListing.findById(id);
-        if (!pg) return res.status(404).json({ message: 'PG not found' });
+        if (!pg) return res.status(404).json({ message: "PG not found" });
 
 
         for (let img of pg.images) {
@@ -160,10 +160,10 @@ exports.deletePG = async (req, res) => {
         // Delete PG from database
         await PGListing.findByIdAndDelete(id);
 
-        res.status(200).json({ message: 'PG and images deleted successfully' });
+        res.status(200).json({ message: "PG and images deleted successfully" });
 
     } catch (err) {
-        res.status(500).json({ message: 'Error deleting PG', error: err.message });
+        res.status(500).json({ message: "Error deleting PG", error: err.message });
     }
 };
 
@@ -178,7 +178,7 @@ exports.updatePG = async (req, res) => {
     try {
         const pg = await PGListing.findById(id);
         if (!pg) {
-            return res.status(404).json({ message: 'PG not found' });
+            return res.status(404).json({ message: "PG not found" });
         }
 
         // Update basic fields
@@ -212,12 +212,12 @@ exports.updatePG = async (req, res) => {
         await pg.save();
 
         res.status(200).json({
-            message: 'PG updated successfully',
+            message: "PG updated successfully",
             pg
         });
     } catch (err) {
         res.status(500).json({
-            message: 'Error updating PG',
+            message: "Error updating PG",
             error: err.message
         });
     }
@@ -240,7 +240,7 @@ exports.getUserPGs = async (req, res) => {
     } catch (err) {
         res.status(500).json({
             success: false,
-            message: 'Error fetching PG listings for user',
+            message: "Error fetching PG listings for user",
             error: err.message
         });
     }

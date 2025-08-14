@@ -1,7 +1,7 @@
 // Import required packages
-const cloudinary = require('cloudinary').v2;
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const multer = require('multer');
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const multer = require("multer");
 
 // Configure Cloudinary with credentials from environment variables
 cloudinary.config({
@@ -14,8 +14,8 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: 'pg-images', // All uploaded images will be stored inside this folder in Cloudinary
-        allowed_formats: ['jpg', 'png', 'jpeg'] // Only allow image formats
+        folder: "pg-images", // All uploaded images will be stored inside this folder in Cloudinary
+        allowed_formats: ["jpg", "png", "jpeg"] // Only allow image formats
     }
 });
 
